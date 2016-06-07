@@ -9,7 +9,7 @@ import measure.producer.Postman;
 
 public class Dealer extends ChannelHandlerAdapter {
 
-	private final Postman postman;
+	private static Postman postman;
 
 	public Dealer(Configuration configuration) {
 		postman = new Postman(configuration);

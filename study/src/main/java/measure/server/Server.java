@@ -1,5 +1,7 @@
 package measure.server;
 
+import java.util.Iterator;
+
 import org.apache.commons.configuration.CompositeConfiguration;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.EnvironmentConfiguration;
@@ -26,12 +28,20 @@ public class Server {
 	public Server() {
 		configuration = new CompositeConfiguration();
 		configuration.addConfiguration(new EnvironmentConfiguration());
-		String config_path = configuration.getString("MEASURE_CONF_DIR");
+		String config_path = configuration.getString("MEASURE_CONF_DIR", ".");
 		if (config_path != null) {
 			String conf = config_path + "/measure.conf";
 			try {
 				configuration.addConfiguration(new PropertiesConfiguration(conf));
-				LOG.info("Load config from. " + conf);
+				LOG.info("Load config from " + conf);
+				Iterator<String> keys = configuration.getKeys();
+				String key = null;
+				StringBuffer buffer_cofig = new StringBuffer("Config : \n");
+				while (keys.hasNext()) {
+					key = keys.next();
+					buffer_cofig.append(key).append("=").append(configuration.getString(key)).append(" \n");
+				}
+				LOG.info(buffer_cofig.toString());
 			} catch (ConfigurationException e) {
 				// TODO Auto-generated catch block
 				LOG.error("could not load config from " + conf, e);
@@ -40,7 +50,6 @@ public class Server {
 		} else {
 			LOG.warn("MEASURE_CONF_DIR  not specifies, you can Overwrite to you environment.");
 		}
-
 		init();
 	}
 

@@ -7,7 +7,7 @@
 	<properties>
 		<netty.version>5.0.0.Alpha2</netty.version>
 		<redis.version>2.8.0</redis.version>
-		<kafka.version>0.10.0.0</kafka.version>
+		<kafka.version>0.9.0.0</kafka.version>
 		<configuration.version>1.10</configuration.version>
 		<log4j.version>1.2.17</log4j.version>
 	</properties>
