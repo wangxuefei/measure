@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<common>
+		<building_id>510107D003</building_id>
+		<gateway_id>02</gateway_id>
+		<type>report</type>
+	</common>
+	<data operation="report">
+		<sequence>15206</sequence>
+		<parser>yes</parser>
+		<time>20160322144003</time>
+		<total>0</total>
+		<current>0</current>
+		<meter id="1" addr="000000000001" tp="06" name="??????">
+			<function id="1" coding="01A10" error="192">1527.76750</function>
+			<function id="2" coding="01A10" error="192">604.00000</function>
+			<function id="3" coding="01A10" error="192">0.00083</function>
+			<function id="4" coding="01A10" error="192">-243.00000</function>
+			<function id="5" coding="01A10" error="192">227.16000</function>
+			<function id="6" coding="01A10" error="2">-1.00000</function>
+			<function id="7" coding="01A10" error="2">-1.00000</function>
+			<function id="8" coding="01A10" error="192">3.08600</function>
+			<function id="9" coding="01A10" error="2">-1.00000</function>
+			<function id="10" coding="01A10" error="2">-1.00000</function>
+			<function id="11" coding="01A10" error="192">0.89300</function>
+			<function id="12" coding="01A10" error="2">-1.00000</function>
+			<function id="13" coding="01A10" error="2">-1.00000</function>
+			<function id="14" coding="01A10" error="2">-1.00000</function>
+		</meter>
+		<meter id="2" addr="000000000002" tp="06" name="??????">
+			<function id="1" coding="01A20" error="2">-1.00000</function>
+			<function id="2" coding="01A20" error="2">-1.00000</function>
+			<function id="3" coding="01A20" error="2">-1.00000</function>
+			<function id="4" coding="01A20" error="2">-1.00000</function>
+			<function id="5" coding="01A20" error="2">-1.00000</function>
+			<function id="6" coding="01A20" error="2">-1.00000</function>
+			<function id="7" coding="01A20" error="2">-1.00000</function>
+			<function id="8" coding="01A20" error="2">-1.00000</function>
+			<function id="9" coding="01A20" error="2">-1.00000</function>
+			<function id="10" coding="01A20" error="2">-1.00000</function>
+			<function id="11" coding="01A20" error="2">-1.00000</function>
+			<function id="12" coding="01A20" error="2">-1.00000</function>
+			<function id="13" coding="01A20" error="2">-1.00000</function>
+			<function id="14" coding="01A20" error="2">-1.00000</function>
+		</meter>
+		<meter id="3" addr="000000000003" tp="02" name="??????">
+			<function id="15" coding="02000" error="192">1.00000</function>
+		</meter>
+	</data>
+</root>

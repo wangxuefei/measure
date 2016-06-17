@@ -13,10 +13,12 @@ import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.clients.producer.RecordMetadata;
 
+import measure.message.Message;
+
 public class Postman {
 
 	private Configuration configuration;
-	private KafkaProducer<String, String> producer;
+	private KafkaProducer<Long, Message> producer;
 	private static final Log LOG = LogFactory.getLog(Postman.class);
 	private final Vector<String> topics = new Vector<String>();
 
@@ -30,27 +32,31 @@ public class Postman {
 			topics.addElement((String) t);
 			LOG.info("add topic " + (String) t);
 		}
-		this.configuration = configuration;
-		this.producer = new KafkaProducer<String, String>(properties);
+		this.setConfiguration(configuration);
+		this.producer = new KafkaProducer<Long, Message>(properties);
 
 	}
 
 	/*
 	 * 此处发送消息，做消息编码处理
 	 */
-	public Future<RecordMetadata> send(ProducerRecord<String, String> record) {
+	public Future<RecordMetadata> send(ProducerRecord<Long, Message> record) {
 		return producer.send(record);
 	}
 
 	/*
 	 * test method send
 	 */
-	public void send(String message) {
+	public void send(Message message) {
 		System.out.println("PostMan get message : " + message);
 		for (String topic : topics) {
-			ProducerRecord<String, String> record = new ProducerRecord<String, String>(topic, message);
+			ProducerRecord<Long, Message> record = new ProducerRecord<Long, Message>(topic, message);
 			this.producer.send(record);
 		}
+
+	}
+
+	public void send(String message) {
 
 	}
 
@@ -67,6 +73,14 @@ public class Postman {
 			properties.put(key.replaceFirst("measure.producer.", ""), configuration.getString(key));
 		}
 		return properties;
+	}
+
+	public Configuration getConfiguration() {
+		return configuration;
+	}
+
+	public void setConfiguration(Configuration configuration) {
+		this.configuration = configuration;
 	}
 
 }

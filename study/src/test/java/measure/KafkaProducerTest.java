@@ -29,7 +29,7 @@ public class KafkaProducerTest {
 
 						public void onCompletion(RecordMetadata metadata, Exception exception) {
 							// TODO Auto-generated method stub
-							System.out.println(metadata.topic());
+							System.out.println(metadata.partition());
 						}
 					});
 		}
