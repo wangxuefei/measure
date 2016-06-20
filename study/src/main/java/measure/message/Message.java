@@ -6,17 +6,21 @@ import measure.message.model.Meter;
 
 public class Message {
 
-	private long build;
+	private String build;
 	private long sequence;
 	private long time;
 
 	private HashSet<Meter> meters;
 
-	public long getBuild() {
+	public Message() {
+		meters = new HashSet<Meter>();
+	}
+
+	public String getBuild() {
 		return build;
 	}
 
-	public void setBuild(long build) {
+	public void setBuild(String build) {
 		this.build = build;
 	}
 
@@ -42,6 +46,10 @@ public class Message {
 
 	public void setMeters(HashSet<Meter> meters) {
 		this.meters = meters;
+	}
+
+	public void addMeter(Meter meter) {
+		this.meters.add(meter);
 	}
 
 	@Override
