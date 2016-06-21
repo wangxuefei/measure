@@ -1,15 +1,17 @@
 package measure.message.model;
 
-import java.util.HashSet;
+import java.util.LinkedList;
 
 public class Meter {
 
 	private int meter;
 
-	private HashSet<Function> functions;
+	// private HashSet<Function> functions;
+	private LinkedList<Function> functions;
 
 	public Meter() {
-		functions = new HashSet<Function>();
+		// functions = new HashSet<Function>();
+		functions = new LinkedList<Function>();
 	}
 
 	public int getMeter() {
@@ -20,11 +22,11 @@ public class Meter {
 		this.meter = meter;
 	}
 
-	public HashSet<Function> getFunctions() {
+	public LinkedList<Function> getFunctions() {
 		return functions;
 	}
 
-	public void setFunctions(HashSet<Function> functions) {
+	public void setFunctions(LinkedList<Function> functions) {
 		this.functions = functions;
 	}
 
@@ -44,6 +46,7 @@ public class Meter {
 			helper.append("value").append(":").append(function.getValue());
 			helper.append("},");
 		}
+		helper.deleteCharAt(helper.lastIndexOf(","));
 		helper.append("]");
 		helper.append("}");
 		return helper.toString();

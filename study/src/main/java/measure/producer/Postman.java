@@ -18,7 +18,7 @@ import measure.message.Message;
 public class Postman {
 
 	private Configuration configuration;
-	private KafkaProducer<Long, Message> producer;
+	private KafkaProducer<String, Message> producer;
 	private static final Log LOG = LogFactory.getLog(Postman.class);
 	private final Vector<String> topics = new Vector<String>();
 
@@ -33,14 +33,14 @@ public class Postman {
 			LOG.info("add topic " + (String) t);
 		}
 		this.setConfiguration(configuration);
-		this.producer = new KafkaProducer<Long, Message>(properties);
+		this.producer = new KafkaProducer<String, Message>(properties);
 
 	}
 
 	/*
 	 * 此处发送消息，做消息编码处理
 	 */
-	public Future<RecordMetadata> send(ProducerRecord<Long, Message> record) {
+	public Future<RecordMetadata> send(ProducerRecord<String, Message> record) {
 		return producer.send(record);
 	}
 
@@ -48,9 +48,10 @@ public class Postman {
 	 * test method send
 	 */
 	public void send(Message message) {
-		System.out.println("PostMan get message : " + message);
+		LOG.debug("send data to kafka");
 		for (String topic : topics) {
-			ProducerRecord<Long, Message> record = new ProducerRecord<Long, Message>(topic, message);
+			ProducerRecord<String, Message> record = new ProducerRecord<String, Message>(topic, message);
+			LOG.debug("topic:" + topic + "  =====>" + message);
 			this.producer.send(record);
 		}
 

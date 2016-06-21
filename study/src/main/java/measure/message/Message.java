@@ -1,6 +1,6 @@
 package measure.message;
 
-import java.util.HashSet;
+import java.util.LinkedList;
 
 import measure.message.model.Meter;
 
@@ -10,10 +10,12 @@ public class Message {
 	private long sequence;
 	private long time;
 
-	private HashSet<Meter> meters;
+	// private HashSet<Meter> meters;
+	private LinkedList<Meter> meters;
 
 	public Message() {
-		meters = new HashSet<Meter>();
+		// meters = new HashSet<Meter>();
+		meters = new LinkedList<Meter>();
 	}
 
 	public String getBuild() {
@@ -40,11 +42,11 @@ public class Message {
 		this.time = time;
 	}
 
-	public HashSet<Meter> getMeters() {
+	public LinkedList<Meter> getMeters() {
 		return meters;
 	}
 
-	public void setMeters(HashSet<Meter> meters) {
+	public void setMeters(LinkedList<Meter> meters) {
 		this.meters = meters;
 	}
 
@@ -57,11 +59,13 @@ public class Message {
 		StringBuffer helper = new StringBuffer();
 		helper.append("{");
 		helper.append("build").append(":").append(build).append(",");
+		helper.append("time").append(":").append(time).append(",");
 		helper.append("sequenceNum").append(":").append(sequence).append(",");
 		helper.append("meters").append(":").append("[");
 		for (Meter meter : meters) {
 			helper.append(meter.toString()).append(",");
 		}
+		helper.deleteCharAt(helper.lastIndexOf(","));
 		helper.append("]").append("}");
 		return helper.toString();
 	}

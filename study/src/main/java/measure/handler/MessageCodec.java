@@ -20,7 +20,7 @@ public class MessageCodec extends ByteToMessageCodec<Message> {
 	@Override
 	protected void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out) throws Exception {
 		System.out.println("Decode 可读取数据大小>>>>>>" + in.readableBytes());
-		if (in.readableBytes() < 3) {
+		if (in.readableBytes() < 2500) {
 			return;
 		}
 		byte dst[] = new byte[in.readableBytes()];
