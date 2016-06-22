@@ -19,7 +19,6 @@ public class Dealer extends ChannelHandlerAdapter {
 	public void channelRead(ChannelHandlerContext ctx, Object msg) {
 		Message message = (Message) msg;
 		postman.send(message);
-		System.out.println(message);
 		ctx.writeAndFlush(message);
 	}
 

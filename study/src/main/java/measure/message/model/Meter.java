@@ -1,17 +1,14 @@
 package measure.message.model;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 
 public class Meter {
 
 	private int meter;
-
-	// private HashSet<Function> functions;
-	private LinkedList<Function> functions;
+	private ArrayList<Function> functions;
 
 	public Meter() {
-		// functions = new HashSet<Function>();
-		functions = new LinkedList<Function>();
+		functions = new ArrayList<Function>();
 	}
 
 	public int getMeter() {
@@ -22,11 +19,11 @@ public class Meter {
 		this.meter = meter;
 	}
 
-	public LinkedList<Function> getFunctions() {
+	public ArrayList<Function> getFunctions() {
 		return functions;
 	}
 
-	public void setFunctions(LinkedList<Function> functions) {
+	public void setFunctions(ArrayList<Function> functions) {
 		this.functions = functions;
 	}
 

@@ -1,6 +1,6 @@
 package measure.message;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 
 import measure.message.model.Meter;
 
@@ -11,11 +11,11 @@ public class Message {
 	private long time;
 
 	// private HashSet<Meter> meters;
-	private LinkedList<Meter> meters;
+	private ArrayList<Meter> meters;
 
 	public Message() {
 		// meters = new HashSet<Meter>();
-		meters = new LinkedList<Meter>();
+		meters = new ArrayList<Meter>();
 	}
 
 	public String getBuild() {
@@ -42,11 +42,11 @@ public class Message {
 		this.time = time;
 	}
 
-	public LinkedList<Meter> getMeters() {
+	public ArrayList<Meter> getMeters() {
 		return meters;
 	}
 
-	public void setMeters(LinkedList<Meter> meters) {
+	public void setMeters(ArrayList<Meter> meters) {
 		this.meters = meters;
 	}
 

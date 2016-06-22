@@ -1,7 +1,11 @@
 package measure.message;
 
+import java.io.IOException;
 import java.util.List;
 
+import org.codehaus.jackson.JsonGenerationException;
+import org.codehaus.jackson.map.JsonMappingException;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.DocumentHelper;
@@ -43,8 +47,9 @@ public class StringXmlToMessage {
 		return message;
 	}
 
-	public static byte[] convertToBytes(Message message) {
-
-		return null;
+	public static byte[] convertToBytes(Message message)
+			throws JsonGenerationException, JsonMappingException, IOException {
+		ObjectMapper mapper = new ObjectMapper();
+		return mapper.writeValueAsBytes(message);
 	}
 }
