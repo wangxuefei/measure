@@ -49,8 +49,9 @@ public class Postman {
 	 */
 	public void send(Message message) {
 		LOG.debug("send data to kafka");
+		String key = message.getBuild();
 		for (String topic : topics) {
-			ProducerRecord<String, Message> record = new ProducerRecord<String, Message>(topic, message);
+			ProducerRecord<String, Message> record = new ProducerRecord<String, Message>(topic, key, message);
 			LOG.debug("topic:" + topic + "  =====>" + message);
 			this.producer.send(record);
 		}
