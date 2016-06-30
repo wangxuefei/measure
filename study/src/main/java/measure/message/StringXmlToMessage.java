@@ -17,6 +17,7 @@ import measure.message.model.Meter;
 
 public class StringXmlToMessage {
 
+	@SuppressWarnings("unchecked")
 	public static Message convertToMessage(String xmlString) throws DocumentException {
 		Message message = new Message();
 		Document document = DocumentHelper.parseText(xmlString);
@@ -24,14 +25,12 @@ public class StringXmlToMessage {
 		Node build = root.selectSingleNode("/root/common/building_id");
 		Node sequence = root.selectSingleNode("/root/data/sequence");
 		Node time = root.selectSingleNode("/root/data/time");
-		List meters = root.selectNodes("/root/data/meter");
-		for (Object m : meters) {
-			Node meter = (Node) m;
+		List<Node> meters = root.selectNodes("/root/data/meter");
+		for (Node meter : meters) {
 			Meter M = new Meter();
 			M.setMeter(Integer.valueOf(meter.valueOf("@id")));
-			List functions = meter.selectNodes("function");
-			for (Object func : functions) {
-				Node function = (Node) func;
+			List<Node> functions = meter.selectNodes("function");
+			for (Node function : functions) {
 				Function F = new Function();
 				F.setId(Integer.valueOf(function.valueOf("@id")));
 				F.setCode(function.valueOf("@coding"));

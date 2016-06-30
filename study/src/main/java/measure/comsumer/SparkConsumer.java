@@ -10,6 +10,8 @@ import org.apache.commons.configuration.Configuration;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.spark.SparkConf;
+import org.apache.spark.api.java.function.FlatMapFunction;
+import org.apache.spark.api.java.function.Function;
 import org.apache.spark.streaming.Duration;
 import org.apache.spark.streaming.api.java.JavaPairInputDStream;
 import org.apache.spark.streaming.api.java.JavaStreamingContext;
@@ -51,6 +53,8 @@ public class SparkConsumer {
 	private void executor(JavaPairInputDStream<String, Message> dstream) {
 		LOG.info("目前尚未实现");
 		dstream.print(10);
+		//dstream.groupByKey().mapValues(new MessagesFuction());
+		//dstream.mapPartitions(new MessagesFuction());
 
 	}
 
