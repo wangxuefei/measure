@@ -2,6 +2,10 @@ package measure.handler;
 
 import java.util.List;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.dom4j.DocumentException;
+
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.ByteToMessageCodec;
@@ -9,6 +13,8 @@ import measure.message.Message;
 import measure.message.StringXmlToMessage;
 
 public class MessageCodec extends ByteToMessageCodec<Message> {
+
+	private static final Log LOG = LogFactory.getLog(MessageCodec.class);
 
 	@Override
 	protected void encode(ChannelHandlerContext ctx, Message msg, ByteBuf out) throws Exception {
@@ -25,7 +31,13 @@ public class MessageCodec extends ByteToMessageCodec<Message> {
 		}
 		byte dst[] = new byte[in.readableBytes()];
 		in.readBytes(dst);
-		Message message = StringXmlToMessage.convertToMessage(new String(dst));
+		Message message = null;
+		try {
+			message = StringXmlToMessage.convertToMessage(new String(dst));
+		} catch (DocumentException e) {
+			ctx.writeAndFlush(e);
+		}
+		LOG.info("get data from " + ctx.channel().remoteAddress());
 		out.add(message);
 	}
 

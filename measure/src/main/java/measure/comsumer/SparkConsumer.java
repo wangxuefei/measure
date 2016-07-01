@@ -51,7 +51,8 @@ public class SparkConsumer {
 	private void executor(JavaPairInputDStream<String, Message> dstream) {
 		LOG.info("目前尚未实现");
 		dstream.print(10);
-
+		// dstream.groupByKey().mapValues(new MessagesFuction());
+		// dstream.mapPartitions(new MessagesFuction());
 	}
 
 	private Map<String, String> getConsumerConfig() {
